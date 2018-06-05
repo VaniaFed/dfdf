@@ -4,13 +4,45 @@ html
         meta(charset = 'utf-8')
         link(href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,400,500,700,900" rel="stylesheet")
         script(src='index.js')
+        link(href='css/normalize.css' rel='stylesheet')
         link(href='css/index.css' rel='stylesheet')
         meta(name='viewport', content="initial-scale=1.0, width=device-width")
-        title Webpack Шаблон
-        
+        title Флорист
+
+
     body
-        h1 Webpack Шаблон
-        ul
-            li Pug
-            li Sass
-            li Babel
+        .wrapper
+            .modal_bg.hidden
+            .container__modal.container__modal__end.hidden
+                .modal__inner
+                    h1.modal__inner__head Время истекло
+                    p.modal__inner__text#result__cont_game Ваш результат:
+                    input.modal__inner__button#restart_game(type="button" value="Начать заново")
+
+            .container__modal.container__modal__start.hidden
+                .modal__inner
+                    h1.modal__inner__head Флорист
+                    p.modal__inner__text Совпадает ли текст цвета слева со значение цвета справа?
+                    input.modal__inner__button#start_game(type="button" value="Начать игру")
+
+
+            .container.content__container
+                header.header__container
+                    p.header_game_name Флорист
+                .container__work
+                    .container_info
+                        .timer Timer: 0
+                        .score Score: 0
+                .container__work__inner
+                    .color-column_items
+                        .color-item_color#color_text1 Красный
+                        .color-item_color#color_value1 Зеленый
+                    .color-column_items
+                        .color-item_color#color_text2 Фиолетовый
+                        .color-item_color#color_value2 Черный
+
+
+
+
+
+
