@@ -71,39 +71,6 @@ body, html
   margin-top: 80px
   text-align: center
 
-.container__work__inner
-  //display: -webkit-flex
-  //display: -ms-flex
-  //display: flex
-  //flex: 1 0 auto
-  //flex-flow: row wrap
-  //justify-content: space-around
-  padding: 16px
-  background: #eee
-  border-radius:  0 0 6px 6px
-  font-size: 0
-  text-align: center
-
-.container__work__inner, .container_info
-  width: 600px
-  margin: 0 auto
-  font-size: 16px
-
-.color-column_items
-  display: inline-block
-  margin-left: 40px
-
-.color-item_color
-  background: #fff
-  color: $accent2
-  padding: 20px 36px
-  max-width: 200px
-  text-align: center
-  margin-top: 20px
-  font-size: 20px
-  &:first-child
-    margin-top: 0
-
 .timer, .score
   padding: 12px 16px
   display: inline-block
@@ -113,6 +80,58 @@ body, html
 
 .score
   text-align: right
+
+.container__work__inner
+  //display: -webkit-flex
+  //display: -ms-flex
+  //display: flex
+  //flex: 1 0 auto
+  //flex-flow: row wrap
+  //justify-content: space-around
+  background: #eee
+  border-radius:  0 0 6px 6px
+  font-size: 0
+  text-align: center
+  height: 400px
+
+.container__work__inner, .container_info
+  width: 600px
+  margin: 0 auto
+  font-size: 16px
+
+.color-row_items
+  display: flex
+  justify-content: space-around
+  height: 100%
+  align-items: center
+
+.color-item
+  background: #fff
+  color: $accent2
+  padding: 20px 36px
+  min-width: 200px
+  font-size: 20px
+  box-shadow: 2px 2px 14px 0 rgba(0, 0, 0, .1)
+
+.bottom_info
+  margin-top: 12px
+  &__
+    font-weight: 300
+  &__button_answer
+    font-weight: bold
+    //background: $accent
+    border: 2px solid $accent
+    color: #000
+    padding: 6px 20px
+    display: inline-block
+    margin-top: 10px
+    text-decoration: none
+    transition: all .2s
+    &:hover
+      background: $accent
+      color: #fff
+    &:last-child
+      margin-left: 30px
 
 .container__modal
   width: 100%

@@ -30,7 +30,9 @@ const conf = {
         filename: 'index.js',
     },
     devServer: {
-        overlay: true
+        overlay: true,
+        host: '192.168.0.49',
+        port: '9000',
     },
     module: {
         rules: [
