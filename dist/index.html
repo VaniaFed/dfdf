@@ -4,26 +4,26 @@
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,400,500,700,900" rel="stylesheet">
     <script src="index.js"></script>
-    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/normalize.css" type="text/css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
     <meta name="viewport" content="initial-scale=1.0, width=device-width">
     <title>Флорист</title>
   </head>
   <body>
     <div class="wrapper">
-      <div class="modal_bg hidden"></div>
+      <div class="modal_bg"></div>
       <div class="container__modal container__modal__end hidden">
         <div class="modal__inner">
           <h1 class="modal__inner__head">Время истекло</h1>
           <p class="modal__inner__text" id="result__cont_game">Ваш результат:</p>
-          <input class="modal__inner__button" id="restart_game" type="button" value="Начать заново">
+          <input class="modal__inner__button" id="modal_restart" type="button" value="Начать заново">
         </div>
       </div>
-      <div class="container__modal container__modal__start hidden">
+      <div class="container__modal container__modal__start">
         <div class="modal__inner">
           <h1 class="modal__inner__head">Флорист</h1>
           <p class="modal__inner__text">Совпадает ли текст цвета слева со значение цвета справа?</p>
-          <input class="modal__inner__button" id="start_game" type="button" value="Начать игру">
+          <input class="modal__inner__button" id="modal_start" type="button" value="Начать игру">
         </div>
       </div>
       <div class="container content__container">
