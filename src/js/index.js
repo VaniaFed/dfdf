@@ -14,6 +14,8 @@ window.onload = function () {
               modalEnd = document.querySelector('.container__modal__end'),
               modalBg = document.querySelector('.modal_bg'),
               colorItem = document.querySelectorAll('.color-item'),
+              btnAnswerYes = document.querySelector('#answer_yes'),
+              btnAnswerNot = document.querySelector('#answer_not'),
               textList = ['Красный', 'Синий', 'Фиолетовый', 'Розовый', 'Черный', 'Оранжевый', 'Зеленый'],
               colorList = ['#f44336', '#2196F3', '#9C27B0', '#E91E63', '#000', '#FF9800', '#4CAF50'];
 
@@ -33,10 +35,30 @@ window.onload = function () {
         };
 
         const drawColor = function () {
-            for (let i = 0; i < colorList.length; i++) {
+            for (let i = 0; i < colorItem.length; i++) {
                 let currentColor = randNum(0, colorList.length - 1);
                 colorItem[i].style.color = colorList[currentColor];
             }
+        };
+
+        const followTheAnswer = function () {
+            const giveAnswerYes = function (e) {
+                if (e.keyCode === 37) {
+                    console.log('answer = yes');
+                }
+            };
+
+            const giveAnswerNot = function (e) {
+                if (e.keyCode === 39) {
+                    console.log('answer = not');
+                }
+            };
+
+            // btnAnswerYes.addEventListener('click', giveAnswerYes);
+
+            window.addEventListener("keydown", giveAnswerYes, false);
+            window.addEventListener('keydown', giveAnswerNot);
+            btnAnswerNot.addEventListener('click', giveAnswerNot);
         };
 
         hiddenModal(modalStart);
@@ -45,15 +67,12 @@ window.onload = function () {
         drawText();
         drawColor();
 
+        followTheAnswer();
+
+
         this.removeEventListener('click', startGame);
     };
 
-    const followTheAnswer = function () {
-        const giveAnAnswer = function () {
-
-        };
-
-    };
 
     const followTheTime = function () {
 
@@ -62,6 +81,7 @@ window.onload = function () {
     const gameOver = function () {
 
     };
+
 
     const btnStartGame = document.querySelector('#modal_start');
 

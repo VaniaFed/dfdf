@@ -3,7 +3,7 @@ html
     head
         meta(charset = 'utf-8')
         link(href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,400,500,700,900" rel="stylesheet")
-        script(src='index.js')
+        script(defer src='index.js')
         link(href='css/normalize.css' type="text/css" rel='stylesheet')
         link(href='css/index.css' rel='stylesheet')
         meta(name='viewport', content="initial-scale=1.0, width=device-width")
@@ -34,5 +34,5 @@ html
                         .color-item#color_value1 Зеленый
                     .bottom_info
                         .bottom_info__text_question Совпадают ли?
-                        a.bottom_info__button_answer#yes(href='#') Да
-                        a.bottom_info__button_answer#not(href='#') Нет
+                        a.bottom_info__button_answer#answer_yes(href='#') Да
+                        a.bottom_info__button_answer#answer_not(href='#') Нет
