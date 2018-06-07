@@ -8,6 +8,7 @@ window.onload = function () {
         return randNum;
     };
 
+
     // Main functions
     const startGame = function() {
         const modalStart = document.querySelector('.container__modal__start'),
@@ -17,7 +18,15 @@ window.onload = function () {
               btnAnswerYes = document.querySelector('#answer_yes'),
               btnAnswerNot = document.querySelector('#answer_not'),
               textList = ['Красный', 'Синий', 'Фиолетовый', 'Розовый', 'Черный', 'Оранжевый', 'Зеленый'],
-              colorList = ['#f44336', '#2196F3', '#9C27B0', '#E91E63', '#000', '#FF9800', '#4CAF50'];
+              colorList = [
+                  'rgb(244, 67, 54)',
+                  'rgb(33, 150, 243)',
+                  'rgb(156, 39, 176)',
+                  'rgb(233, 30, 99)',
+                  'rgb(0, 0, 0)',
+                  'rgb(255, 152, 0)',
+                  'rgb(76, 175, 80)'
+              ];
 
         const hiddenModal = function (el) {
             el.classList.add('hidden');
@@ -41,32 +50,103 @@ window.onload = function () {
             }
         };
 
+        const nextLevel = function () {
+            drawText();
+            drawColor();
+        };
+
         const followTheAnswer = function () {
+            const itemTextColor = document.querySelectorAll('.color_text'),
+                itemColorValue = document.querySelectorAll('.color_value'),
+                scoreEl = document.querySelector('.score');
+
+            let score = 0;
+
+            const indexText = function (arr, el) {
+                for (let i = 0; i < arr.length; i++) {
+                    if (arr[i] === el) {
+                        return i;
+                    }
+                }
+                return -1;
+            };
+
+            const indexColor = function (arr, el) {
+                for (let i = 0; i < arr.length; i ++) {
+                    if (arr[i] === el) {
+                        return i;
+                    }
+                }
+                return -1;
+            };
+
+            const checkAnswer = function (answer) {
+                for (let i = 0; i < itemColorValue.length; i++) {
+                    let currentTextColor = itemTextColor[i].innerHTML,
+                        currentColorValue = itemColorValue[i].style.color;
+
+                    let currentIndexText = indexText(textList, currentTextColor),
+                        currentIndexColor = indexColor(colorList, currentColorValue);
+
+                    if (currentIndexText === currentIndexColor && answer === 1) {
+                        return 1;
+                    } else if (currentIndexText !== currentIndexColor && answer === 0) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                }
+            };
+
+            const correctAnswer = function () {
+                score += 100;
+                scoreEl.textContent = 'Score: ' + score;
+                nextLevel();
+            };
+
+            const incorrectAnswer = function () {
+                score -= 100;
+                scoreEl.textContent = 'Score: ' + score;
+                nextLevel();
+            };
+
             const giveAnswerYes = function () {
-                console.log('answer = yes');
+                if (checkAnswer(1)) {
+                    correctAnswer();
+                } else {
+                    incorrectAnswer();
+                }
             };
 
             const giveAnswerNot = function () {
-                console.log('answer = not');
+                if (checkAnswer(0)) {
+                    correctAnswer();
+                } else {
+                    incorrectAnswer();
+                }
             };
 
             const pressYes = function () {
                 giveAnswerYes();
+                // btnAnswerYes.removeEventListener('click', pressYes);
             };
 
             const pressNot = function () {
                 giveAnswerNot();
+                // btnAnswerNot.removeEventListener('click', pressNot);
             };
 
             const pressKeydownYes = function (e) {
                 if (e.keyCode === 37) {
                     giveAnswerYes();
+                    // window.removeEventListener("keydown", pressKeydownYes);
                 }
             };
 
             const pressKeydownNot = function (e) {
                 if (e.keyCode === 39) {
                     giveAnswerNot();
+                    // window.removeEventListener('keydown', pressKeydownNot);
                 }
             };
 
@@ -84,7 +164,6 @@ window.onload = function () {
         drawColor();
 
         followTheAnswer();
-
 
         this.removeEventListener('click', startGame);
     };
