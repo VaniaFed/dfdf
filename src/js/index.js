@@ -42,23 +42,39 @@ window.onload = function () {
         };
 
         const followTheAnswer = function () {
-            const giveAnswerYes = function (e) {
+            const giveAnswerYes = function () {
+                console.log('answer = yes');
+            };
+
+            const giveAnswerNot = function () {
+                console.log('answer = not');
+            };
+
+            const pressYes = function () {
+                giveAnswerYes();
+            };
+
+            const pressNot = function () {
+                giveAnswerNot();
+            };
+
+            const pressKeydownYes = function (e) {
                 if (e.keyCode === 37) {
                     console.log('answer = yes');
                 }
             };
 
-            const giveAnswerNot = function (e) {
+            const pressKeydownNot = function (e) {
                 if (e.keyCode === 39) {
                     console.log('answer = not');
                 }
             };
 
-            // btnAnswerYes.addEventListener('click', giveAnswerYes);
+            btnAnswerYes.addEventListener('click', pressYes);
+            btnAnswerNot.addEventListener('click', pressNot);
 
-            window.addEventListener("keydown", giveAnswerYes, false);
-            window.addEventListener('keydown', giveAnswerNot);
-            btnAnswerNot.addEventListener('click', giveAnswerNot);
+            window.addEventListener("keydown", pressKeydownYes);
+            window.addEventListener('keydown', pressKeydownNot);
         };
 
         hiddenModal(modalStart);
