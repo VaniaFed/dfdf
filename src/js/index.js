@@ -60,13 +60,13 @@ window.onload = function () {
 
             const pressKeydownYes = function (e) {
                 if (e.keyCode === 37) {
-                    console.log('answer = yes');
+                    giveAnswerYes();
                 }
             };
 
             const pressKeydownNot = function (e) {
                 if (e.keyCode === 39) {
-                    console.log('answer = not');
+                    giveAnswerNot();
                 }
             };
 
