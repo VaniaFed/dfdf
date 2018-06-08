@@ -12,21 +12,31 @@ window.onload = function () {
     // Main functions
     const startGame = function() {
         const modalStart = document.querySelector('.container__modal__start'),
-              modalEnd = document.querySelector('.container__modal__end'),
               modalBg = document.querySelector('.modal_bg'),
               colorItem = document.querySelectorAll('.color-item'),
               btnAnswerYes = document.querySelector('#answer_yes'),
               btnAnswerNot = document.querySelector('#answer_not'),
-              textList = ['Красный', 'Синий', 'Фиолетовый', 'Розовый', 'Черный', 'Оранжевый', 'Зеленый'],
+              itemTextColor = document.querySelectorAll('.color_text'),
+              itemColorValue = document.querySelectorAll('.color_value'),
+              textList = [
+                  'Красный',
+                  'Синий',
+                  'Фиолетовый',
+                  // 'Розовый',
+                  'Черный',
+                  'Оранжевый',
+                  'Зеленый'
+              ],
               colorList = [
                   'rgb(244, 67, 54)',
                   'rgb(33, 150, 243)',
                   'rgb(156, 39, 176)',
-                  'rgb(233, 30, 99)',
+                  // 'rgb(233, 30, 99)',
                   'rgb(0, 0, 0)',
                   'rgb(255, 152, 0)',
                   'rgb(76, 175, 80)'
               ];
+
 
         const hiddenModal = function (el) {
             el.classList.add('hidden');
@@ -34,6 +44,24 @@ window.onload = function () {
 
         const showModal = function (el) {
             el.classList.remove('hidden');
+        };
+
+        const indexText = function (arr, el) {
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] === el) {
+                    return i;
+                }
+            }
+            return -1;
+        };
+
+        const indexColor = function (arr, el) {
+            for (let i = 0; i < arr.length; i ++) {
+                if (arr[i] === el) {
+                    return i;
+                }
+            }
+            return -1;
         };
 
         const drawText = function () {
@@ -48,6 +76,16 @@ window.onload = function () {
                 let currentColor = randNum(0, colorList.length - 1);
                 colorItem[i].style.color = colorList[currentColor];
             }
+
+            let randNumber = randNum(0, 3);
+            if (randNumber === 1) {
+                for (let i = 0; i < itemColorValue.length; i++) {
+                    const currentTextColor = itemTextColor[i].textContent,
+                          currentIndexText = indexText(textList, currentTextColor);
+
+                    itemColorValue[i].style.color = colorList[currentIndexText];
+                }
+            }
         };
 
         const nextLevel = function () {
@@ -56,29 +94,10 @@ window.onload = function () {
         };
 
         const followTheAnswer = function () {
-            const itemTextColor = document.querySelectorAll('.color_text'),
-                itemColorValue = document.querySelectorAll('.color_value'),
-                scoreEl = document.querySelector('.score');
+            const scoreEl = document.querySelector('.score');
 
             let score = 0;
 
-            const indexText = function (arr, el) {
-                for (let i = 0; i < arr.length; i++) {
-                    if (arr[i] === el) {
-                        return i;
-                    }
-                }
-                return -1;
-            };
-
-            const indexColor = function (arr, el) {
-                for (let i = 0; i < arr.length; i ++) {
-                    if (arr[i] === el) {
-                        return i;
-                    }
-                }
-                return -1;
-            };
 
             const checkAnswer = function (answer) {
                 for (let i = 0; i < itemColorValue.length; i++) {
@@ -160,8 +179,7 @@ window.onload = function () {
         hiddenModal(modalStart);
         hiddenModal(modalBg);
 
-        drawText();
-        drawColor();
+        nextLevel();
 
         followTheAnswer();
 
@@ -174,6 +192,7 @@ window.onload = function () {
     };
 
     const gameOver = function () {
+        const modalEnd = document.querySelector('.container__modal__end');
 
     };
 
