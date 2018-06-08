@@ -13,7 +13,8 @@
     <div class="wrapper">
       <div class="modal_bg"></div>
       <div class="container__modal container__modal__end hidden">
-        <div class="modal__inner">h1.modal__inner__head Время истекло
+        <div class="modal__inner">
+          <h1 class="modal__inner__head">Время истекло</h1>
           <p class="modal__inner__text" id="result__cont_game">Ваш результат:</p>
           <input class="modal__inner__button" id="modal_restart" type="button" value="Начать заново">
         </div>
@@ -29,19 +30,21 @@
         <header class="header__container">
           <p class="header_game_name">Флорист</p>
         </header>
-        <div class="container__work">
-          <div class="container_info">
-            <div class="timer">Timer: 0</div>
-            <div class="score">Score: 0</div>
-          </div>
-        </div>
-        <div class="container__work__inner">
-          <div class="color-row_items">
-            <div class="color-item color_text" id="color_text1">Красный</div>
-            <div class="color-item color_value" id="color_value1">Зеленый</div>
-          </div>
-          <div class="bottom_info">
-            <div class="bottom_info__text_question">Совпадают ли?</div><a class="bottom_info__button_answer" id="answer_yes" href="#">Да</a><a class="bottom_info__button_answer" id="answer_not" href="#">Нет</a>
+        <div class="main_content">
+          <div class="container__work">
+            <div class="container_info">
+              <div class="timer">Timer: 0</div>
+              <div class="score">Score: 0</div>
+            </div>
+            <div class="container__work__inner">
+              <div class="color-row_items">
+                <div class="color-item color_text" id="color_text1">Красный</div>
+                <div class="color-item color_value" id="color_value1">Зеленый</div>
+              </div>
+            </div>
+            <div class="bottom_info">
+              <div class="bottom_info__text_question">Совпадают ли?</div><a class="bottom_info__button_answer" id="answer_yes" href="#">Да</a><a class="bottom_info__button_answer" id="answer_not" href="#">Нет</a>
+            </div>
           </div>
         </div>
       </div>

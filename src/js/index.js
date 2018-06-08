@@ -8,6 +8,14 @@ window.onload = function () {
         return randNum;
     };
 
+    const timer = {
+        time: 60,
+        tick: function () {
+            return this.time -= 1;
+        }
+    };
+
+    let myTimer = timer;
 
     // Main functions
     const startGame = function() {
@@ -37,8 +45,9 @@ window.onload = function () {
                   'rgb(76, 175, 80)'
               ];
 
+        let score = 0;
 
-        const hiddenModal = function (el) {
+        const hideModal = function (el) {
             el.classList.add('hidden');
         };
 
@@ -96,9 +105,6 @@ window.onload = function () {
         const followTheAnswer = function () {
             const scoreEl = document.querySelector('.score');
 
-            let score = 0;
-
-
             const checkAnswer = function (answer) {
                 for (let i = 0; i < itemColorValue.length; i++) {
                     let currentTextColor = itemTextColor[i].innerHTML,
@@ -147,25 +153,21 @@ window.onload = function () {
 
             const pressYes = function () {
                 giveAnswerYes();
-                // btnAnswerYes.removeEventListener('click', pressYes);
             };
 
             const pressNot = function () {
                 giveAnswerNot();
-                // btnAnswerNot.removeEventListener('click', pressNot);
             };
 
             const pressKeydownYes = function (e) {
                 if (e.keyCode === 37) {
                     giveAnswerYes();
-                    // window.removeEventListener("keydown", pressKeydownYes);
                 }
             };
 
             const pressKeydownNot = function (e) {
                 if (e.keyCode === 39) {
                     giveAnswerNot();
-                    // window.removeEventListener('keydown', pressKeydownNot);
                 }
             };
 
@@ -176,26 +178,74 @@ window.onload = function () {
             window.addEventListener('keydown', pressKeydownNot);
         };
 
-        hiddenModal(modalStart);
-        hiddenModal(modalBg);
+        const followTheTime = function () {
+            const timeEl = document.querySelector('.timer'),
+                  scoreEl = document.querySelector('.timer');
+
+            const startTimer = function () {
+
+                const endTimer = function () {
+                    gameOver();
+                    clearInterval(currentInterval);
+                };
+
+                let currentTime = myTimer.tick();
+
+                timeEl.textContent = 'Timer: ' + currentTime;
+                if (currentTime === 0) {
+                    endTimer();
+                }
+            };
+
+            let currentInterval = setInterval(startTimer, 100);
+        };
+
+        const gameOver = function () {
+            const modalEnd = document.querySelector('.container__modal__end'),
+                  btnReload = document.querySelector('#modal_restart');
+
+            const showResult = function () {
+                const elTextScore = document.querySelector('#result__cont_game');
+                elTextScore.textContent = 'Ваш результат: ' + score;
+            };
+
+            const resetValues = function () {
+                score = 0;
+
+                const scoreEl = document.querySelector('.score');
+                scoreEl.textContent = 'Score: ' + score;
+
+                myTimer.time = 60;
+                followTheTime();
+            };
+
+            const reloadGame = function () {
+
+                resetValues();
+
+                hideModal(modalEnd);
+                hideModal(modalBg);
+
+                this.removeEventListener('click', reloadGame);
+            };
+
+            showResult();
+            showModal(modalEnd);
+            showModal(modalBg);
+
+            btnReload.addEventListener('click', reloadGame);
+        };
+
+        hideModal(modalStart);
+        hideModal(modalBg);
 
         nextLevel();
 
         followTheAnswer();
+        followTheTime();
 
         this.removeEventListener('click', startGame);
     };
-
-
-    const followTheTime = function () {
-
-    };
-
-    const gameOver = function () {
-        const modalEnd = document.querySelector('.container__modal__end');
-
-    };
-
 
     const btnStartGame = document.querySelector('#modal_start');
 

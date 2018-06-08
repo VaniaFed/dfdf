@@ -12,7 +12,8 @@ html
         .wrapper
             .modal_bg
             .container__modal.container__modal__end.hidden
-                .modal__inner h1.modal__inner__head Время истекло
+                .modal__inner
+                    h1.modal__inner__head Время истекло
                     p.modal__inner__text#result__cont_game Ваш результат:
                     input.modal__inner__button#modal_restart(type="button" value="Начать заново")
             .container__modal.container__modal__start
@@ -23,15 +24,16 @@ html
             .container.content__container
                 header.header__container
                     p.header_game_name Флорист
-                .container__work
-                    .container_info
-                        .timer Timer: 0
-                        .score Score: 0
-                .container__work__inner
-                    .color-row_items
-                        .color-item.color_text#color_text1 Красный
-                        .color-item.color_value#color_value1 Зеленый
-                    .bottom_info
-                        .bottom_info__text_question Совпадают ли?
-                        a.bottom_info__button_answer#answer_yes(href='#') Да
-                        a.bottom_info__button_answer#answer_not(href='#') Нет
+                .main_content
+                    .container__work
+                        .container_info
+                            .timer Timer: 0
+                            .score Score: 0
+                        .container__work__inner
+                            .color-row_items
+                                .color-item.color_text#color_text1 Красный
+                                .color-item.color_value#color_value1 Зеленый
+                        .bottom_info
+                            .bottom_info__text_question Совпадают ли?
+                            a.bottom_info__button_answer#answer_yes(href='#') Да
+                            a.bottom_info__button_answer#answer_not(href='#') Нет
