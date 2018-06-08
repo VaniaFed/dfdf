@@ -197,7 +197,7 @@ window.onload = function () {
                 }
             };
 
-            let currentInterval = setInterval(startTimer, 100);
+            let currentInterval = setInterval(startTimer, 1000);
         };
 
         const gameOver = function () {
